@@ -1,0 +1,184 @@
+# =========================
+
+# Visual Studio
+
+# =========================
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =========================
+
+# Build Results
+
+# =========================
+
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+build/
+bld/
+
+# =========================
+
+# Rider / JetBrains
+
+# =========================
+
+.idea/
+*.sln.iml
+
+# =========================
+
+# Logs
+
+# =========================
+
+*.log
+
+# =========================
+
+# NuGet
+
+# =========================
+
+*.nupkg
+packages/
+.nuget/
+
+# except build folder
+
+!packages/build/
+
+# =========================
+
+# OS Files
+
+# =========================
+
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+
+# Visual Studio Cache
+
+# =========================
+
+ipch/
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*.cache
+*.ilk
+*.obj
+*.pdb
+
+# =========================
+
+# Resharper
+
+# =========================
+
+_ReSharper*/
+*.DotSettings.user
+
+# =========================
+
+# Dotnet
+
+# =========================
+
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# =========================
+
+# Test Results
+
+# =========================
+
+TestResult*/
+*.trx
+*.coverage
+
+# =========================
+
+# Publish
+
+# =========================
+
+publish/
+*.publishsettings
+
+# =========================
+
+# Azure
+
+# =========================
+
+*.azurePubxml
+
+# =========================
+
+# Local configuration files
+
+# =========================
+
+*.local.json
+appsettings.Development.json
+
+# =========================
+
+# Temporary files
+
+# =========================
+
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# =========================
+
+# Database files (optional)
+
+# =========================
+
+*.mdf
+*.ldf
+
+# =========================
+
+# Personal settings
+
+# =========================
+
+*.rsuser
+
+# Visual Studio Code
+.vscode/
+
+# Rider cache
+.idea/
+
+# dotnet
+*.runtimeconfig.dev.json
+*.deps.json
+
+# logs
+*.log
+logs/
+
+# coverage
+coverage/
