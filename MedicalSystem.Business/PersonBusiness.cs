@@ -68,6 +68,14 @@ namespace MedicalSystem.Business
 
         public PersonBusiness()
         {
+            this.PersonID = -1;
+            this.Name = "";
+            this.DateOfBirth = null;
+            this.Gender = false;
+            this.PhoneNumber = "";
+            this.Email = "";
+            this.Address = "";
+
             Mode = enMode.AddNew;
         }
 

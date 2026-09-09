@@ -119,9 +119,7 @@ namespace MedicalSystem.DataAccess
                     connection.Open();
                     command.ExecuteNonQuery();
 
-                    return newId.Value == DBNull.Value
-                        ? -1
-                        : (int)newId.Value;
+                    return (int)newId.Value;
                 }
             }
         }
