@@ -4,7 +4,7 @@ namespace MedicalSystem.Common
 {
     public static class ValidationHelper
     {
-        public static bool IsValidEmail(string emailAddress)
+        public static bool IsValidEmail(string? emailAddress)
         {
             if (string.IsNullOrWhiteSpace(emailAddress))
                 return true;
@@ -14,12 +14,12 @@ namespace MedicalSystem.Common
             return Regex.IsMatch(emailAddress, pattern);
         }
 
-        public static bool IsValidName(string? name)
+        public static bool IsValidName(string name)
         {
             return !string.IsNullOrWhiteSpace(name);
         }
 
-        public static bool IsValidPhoneNumber(string? phoneNumber)
+        public static bool IsValidPhoneNumber(string phoneNumber)
         {
             return !string.IsNullOrWhiteSpace(phoneNumber);
         }

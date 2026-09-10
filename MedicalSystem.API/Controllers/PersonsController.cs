@@ -16,7 +16,7 @@ namespace MedicalSystem.API.Controllers
         {
             List<PersonDTO> PersonList = PersonBusiness.GetAllPersons();
             if (!PersonList.Any())
-                return NotFound(new { Message = "There are no Persons" });
+                return NotFound("There are no Persons");
 
             return Ok(PersonList);
         }
@@ -66,9 +66,22 @@ namespace MedicalSystem.API.Controllers
 
             int result = person.Save();
 
-            if (result == -1)
+            switch (result)
             {
-                return Conflict("Email is already in use by another person.");
+                case -10:
+                    return BadRequest("Name is required.");
+
+                case -11:
+                    return BadRequest("Phone number is required.");
+
+                case -12:
+                    return BadRequest("Email format is invalid.");
+
+                case -13:
+                    return BadRequest("Date of birth is invalid.");
+
+                case -1:
+                    return Conflict("Email is already in use by another person.");
             }
 
             int PersonID = person.PersonID;
@@ -104,11 +117,23 @@ namespace MedicalSystem.API.Controllers
 
             int result = person.Save();
 
-            if (result == -2)
+            switch (result)
             {
-                return Conflict("Email is already in use by another person.");
-            }
+                case -10:
+                    return BadRequest("Name is required.");
 
+                case -11:
+                    return BadRequest("Phone number is required.");
+
+                case -12:
+                    return BadRequest("Email format is invalid.");
+
+                case -13:
+                    return BadRequest("Date of birth is invalid.");
+
+                case -2:
+                    return Conflict("Email is already in use by another person.");
+            }
             return Ok(person.PDTO);
         }
 

@@ -92,21 +92,21 @@ namespace MedicalSystem.Business
             Mode = cMode;
         }
 
-        private bool IsValid()
+        private int IsValid()
         {
             if (!ValidationHelper.IsValidName(Name))
-                return false;
+                return -10;
 
             if (!ValidationHelper.IsValidPhoneNumber(PhoneNumber))
-                return false;
+                return -11;
 
             if (!ValidationHelper.IsValidEmail(Email))
-                return false;
+                return -12;
 
             if (!ValidationHelper.IsValidDateOfBirth(DateOfBirth))
-                return false;
+                return -13;
 
-            return true;
+            return 1;
         }
 
         public static PersonBusiness? Find(int PersonID)
@@ -139,8 +139,10 @@ namespace MedicalSystem.Business
 
         public int Save()
         {
-            if (!IsValid())
-                return -1;
+            int validationResult = IsValid();
+
+            if (validationResult != 1)
+                return validationResult;
 
             switch (Mode)
             {
