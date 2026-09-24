@@ -80,6 +80,9 @@ namespace MedicalSystem.API.Controllers
                 case -13:
                     return BadRequest("Date of birth is invalid.");
 
+                case -14:
+                    return BadRequest("Gender must be M or F.");
+
                 case -1:
                     return Conflict("Email is already in use by another person.");
             }
@@ -130,6 +133,9 @@ namespace MedicalSystem.API.Controllers
 
                 case -13:
                     return BadRequest("Date of birth is invalid.");
+
+                case -14:
+                    return BadRequest("Gender must be M or F.");
 
                 case -2:
                     return Conflict("Email is already in use by another person.");

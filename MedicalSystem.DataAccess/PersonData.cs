@@ -30,7 +30,7 @@ namespace MedicalSystem.DataAccess
                                 ? null
                                 : reader.GetDateTime(reader.GetOrdinal("DateOfBirth")),
 
-                                Gender = reader.GetBoolean(reader.GetOrdinal("Gender")),
+                                Gender = reader.GetString(reader.GetOrdinal("Gender")),
                                 PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
 
                                 Email = reader.IsDBNull(reader.GetOrdinal("Email"))
@@ -72,7 +72,7 @@ namespace MedicalSystem.DataAccess
                                 ? null
                                 : reader.GetDateTime(reader.GetOrdinal("DateOfBirth")),
 
-                                Gender = reader.GetBoolean(reader.GetOrdinal("Gender")),
+                                Gender = reader.GetString(reader.GetOrdinal("Gender")),
                                 PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
 
                                 Email = reader.IsDBNull(reader.GetOrdinal("Email"))
@@ -104,7 +104,8 @@ namespace MedicalSystem.DataAccess
                     command.Parameters.AddWithValue("@Name", createPerson.Name);
                     command.Parameters.AddWithValue("@DateOfBirth", createPerson.DateOfBirth ?? (object)DBNull.Value);
 
-                    command.Parameters.AddWithValue("@Gender", createPerson.Gender);
+                    command.Parameters.Add("@Gender", SqlDbType.NVarChar, 1)
+                           .Value = createPerson.Gender;
                     command.Parameters.AddWithValue("@PhoneNumber", createPerson.PhoneNumber);
 
                     command.Parameters.AddWithValue("@Email", createPerson.Email ?? (object)DBNull.Value);
@@ -136,7 +137,8 @@ namespace MedicalSystem.DataAccess
                     command.Parameters.AddWithValue("@Name", updatePerson.Name);
                     command.Parameters.AddWithValue("@DateOfBirth", updatePerson.DateOfBirth ?? (object)DBNull.Value);
 
-                    command.Parameters.AddWithValue("@Gender", updatePerson.Gender);
+                    command.Parameters.Add("@Gender", SqlDbType.NVarChar, 1)
+                           .Value = updatePerson.Gender;
                     command.Parameters.AddWithValue("@PhoneNumber", updatePerson.PhoneNumber);
 
                     command.Parameters.AddWithValue("@Email", updatePerson.Email ?? (object)DBNull.Value);

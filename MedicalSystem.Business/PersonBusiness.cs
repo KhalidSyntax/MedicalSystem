@@ -12,7 +12,7 @@ namespace MedicalSystem.Business
         public int PersonID { get; set; }
         public string Name { get; set; } = "";
         public DateTime? DateOfBirth { get; set; }
-        public bool Gender { get; set; }
+        public string Gender { get; set; } = "";
         public string PhoneNumber { get; set; } = "";
         public string? Email { get; set; }
         public string? Address { get; set; }
@@ -71,7 +71,7 @@ namespace MedicalSystem.Business
             this.PersonID = -1;
             this.Name = "";
             this.DateOfBirth = null;
-            this.Gender = false;
+            this.Gender = "";
             this.PhoneNumber = "";
             this.Email = "";
             this.Address = "";
@@ -105,6 +105,9 @@ namespace MedicalSystem.Business
 
             if (!ValidationHelper.IsValidDateOfBirth(DateOfBirth))
                 return -13;
+
+            if (Gender != "M" && Gender != "F")
+                return -14;
 
             return 1;
         }
