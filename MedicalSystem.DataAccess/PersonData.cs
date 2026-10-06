@@ -102,25 +102,44 @@ namespace MedicalSystem.DataAccess
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("@Name", createPerson.Name);
-                    command.Parameters.AddWithValue("@DateOfBirth", createPerson.DateOfBirth ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@DateOfBirth",
+                        createPerson.DateOfBirth ?? (object)DBNull.Value);
 
                     command.Parameters.Add("@Gender", SqlDbType.NVarChar, 1)
                            .Value = createPerson.Gender;
-                    command.Parameters.AddWithValue("@PhoneNumber", createPerson.PhoneNumber);
 
-                    command.Parameters.AddWithValue("@Email", createPerson.Email ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("@Address", createPerson.Address ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@PhoneNumber",
+                        createPerson.PhoneNumber);
+
+                    command.Parameters.AddWithValue("@Email",
+                        createPerson.Email ?? (object)DBNull.Value);
+
+                    command.Parameters.AddWithValue("@Address",
+                        createPerson.Address ?? (object)DBNull.Value);
 
                     var newId = new SqlParameter("@NewPersonID", SqlDbType.Int)
                     {
                         Direction = ParameterDirection.Output
                     };
+
                     command.Parameters.Add(newId);
+
+                    var returnValue = new SqlParameter
+                    {
+                        Direction = ParameterDirection.ReturnValue
+                    };
+
+                    command.Parameters.Add(returnValue);
 
                     connection.Open();
                     command.ExecuteNonQuery();
 
-                    return (int)newId.Value;
+                    int result = (int)returnValue.Value;
+
+                    if (result == 1)
+                        return (int)newId.Value;
+
+                    return result;
                 }
             }
         }

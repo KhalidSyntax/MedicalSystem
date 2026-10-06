@@ -47,6 +47,13 @@ namespace MedicalSystem.Business
         {
             this.PatientID = -1;
             this.PersonID = -1;
+
+            this.Name = "";
+            this.DateOfBirth = null;
+            this.Gender = "";
+            this.PhoneNumber = "";
+            this.Email = "";
+            this.Address = "";
         }
 
         public PatientBusiness(PatientDTO patientDTO)

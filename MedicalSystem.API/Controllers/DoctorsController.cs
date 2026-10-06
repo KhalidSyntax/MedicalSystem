@@ -9,7 +9,7 @@ namespace MedicalSystem.API.Controllers
     public class DoctorsController : ControllerBase
     {
         [HttpGet("All", Name = "GetAllDoctors")]
-        [ProducesResponseType(typeof(DoctorDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<DoctorDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         public ActionResult<IEnumerable<DoctorDTO>> GetAllDoctors()
         {
