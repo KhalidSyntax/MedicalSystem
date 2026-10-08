@@ -23,7 +23,7 @@ namespace MedicalSystem.API.Controllers
 
         [HttpGet("{PersonID}", Name = "GetPersonByID")]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(object), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(PersonDTO), StatusCodes.Status200OK)]
         public ActionResult<PersonDTO> GetPersonByID(int PersonID)
         {

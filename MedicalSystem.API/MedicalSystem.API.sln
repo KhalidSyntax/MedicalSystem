@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalSystem.DTOs", "..\Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalSystem.Common", "..\MedicalSystem.Common\MedicalSystem.Common.csproj", "{45A8145C-AE25-4BA9-9D9C-25D6C416EB1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalSystem.WinForms", "..\MedicalSystem.WinForms\MedicalSystem.WinForms.csproj", "{F8D3DD59-E3B5-47CD-9E33-636014040927}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{45A8145C-AE25-4BA9-9D9C-25D6C416EB1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45A8145C-AE25-4BA9-9D9C-25D6C416EB1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45A8145C-AE25-4BA9-9D9C-25D6C416EB1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D3DD59-E3B5-47CD-9E33-636014040927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D3DD59-E3B5-47CD-9E33-636014040927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D3DD59-E3B5-47CD-9E33-636014040927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D3DD59-E3B5-47CD-9E33-636014040927}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
