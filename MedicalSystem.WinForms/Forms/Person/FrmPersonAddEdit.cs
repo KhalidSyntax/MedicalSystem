@@ -54,44 +54,55 @@ namespace MedicalSystem.WinForms.Forms.Person
 
         private async Task LoadData()
         {
-            _Person = await _personService.GetPersonByIDAsync(_PersonID);
+            try
+            {
+                _Person = await _personService.GetPersonByIDAsync(_PersonID);
 
-            if (_Person == null)
+                if (_Person == null)
+                {
+                    MessageBox.Show(
+                        $"Person with ID = {_PersonID} was not found.",
+                        "Person",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    this.Close();
+                    return;
+                }
+
+                lblTitle.Text = "Update Person";
+                this.Text = "Update Person";
+
+                lblPersonID.Text = _Person.PersonID.ToString();
+
+                txtName.Text = _Person.Name;
+                txtPhoneNumber.Text = _Person.PhoneNumber;
+                txtEmail.Text = _Person.Email ?? "";
+                txtAddress.Text = _Person.Address ?? "";
+
+                if (_Person.DateOfBirth.HasValue)
+                {
+                    dtpDateOfBirth.Value = _Person.DateOfBirth.Value;
+                    dtpDateOfBirth.Checked = true;
+                }
+                else
+                {
+                    dtpDateOfBirth.Checked = false;
+                }
+
+                if (_Person.Gender == "M")
+                    cbGender.SelectedIndex = 1;
+                else
+                    cbGender.SelectedIndex = 2;
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(
-                    $"Person with ID = {_PersonID} was not found.",
-                    "Person",
+                    $"Failed to load person.\n{ex.Message}",
+                    "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-
-                this.Close();
-                return;
             }
-
-            lblTitle.Text = "Update Person";
-            this.Text = "Update Person";
-
-            lblPersonID.Text = _Person.PersonID.ToString();
-
-            txtName.Text = _Person.Name;
-            txtPhoneNumber.Text = _Person.PhoneNumber;
-            txtEmail.Text = _Person.Email ?? "";
-            txtAddress.Text = _Person.Address ?? "";
-
-            if (_Person.DateOfBirth.HasValue)
-            {
-                dtpDateOfBirth.Value = _Person.DateOfBirth.Value;
-                dtpDateOfBirth.Checked = true;
-            }
-            else
-            {
-                dtpDateOfBirth.Checked = false;
-            }
-
-            if (_Person.Gender == "M")
-                cbGender.SelectedIndex = 1;
-            else
-                cbGender.SelectedIndex = 2;
         }
 
         private async void FrmPersonAddEdit_Load(object sender, EventArgs e)

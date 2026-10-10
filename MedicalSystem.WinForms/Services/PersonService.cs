@@ -23,44 +23,46 @@ namespace MedicalSystem.WinForms.Services
 
         public async Task<List<PersonDTO>> GetAllPersonsAsync()
         {
-            HttpResponseMessage response =
-                await _httpClient.GetAsync("api/Persons/All");
+            using (HttpResponseMessage response =
+                await _httpClient.GetAsync("api/Persons/All"))
+            {
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return new List<PersonDTO>();
 
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                return new List<PersonDTO>();
+                response.EnsureSuccessStatusCode();
 
-            response.EnsureSuccessStatusCode();
+                string json =
+                    await response.Content.ReadAsStringAsync();
 
-            string json =
-                await response.Content.ReadAsStringAsync();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
 
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
+                List<PersonDTO> persons =
+                    serializer.Deserialize<List<PersonDTO>>(json);
 
-            List<PersonDTO> persons =
-                serializer.Deserialize<List<PersonDTO>>(json);
-
-            return persons;
+                return persons;
+            }
         }
 
         public async Task<PersonDTO> GetPersonByIDAsync(int personID)
         {
-            HttpResponseMessage response =
-                    await _httpClient.GetAsync($"api/Persons/{personID}");
+            using (HttpResponseMessage response =
+                    await _httpClient.GetAsync($"api/Persons/{personID}"))
+            {
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return null;
 
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                return null;
+                response.EnsureSuccessStatusCode();
 
-            response.EnsureSuccessStatusCode();
+                string json =
+                    await response.Content.ReadAsStringAsync();
 
-            string json =
-                await response.Content.ReadAsStringAsync();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
 
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
+                PersonDTO persons =
+                    serializer.Deserialize<PersonDTO>(json);
 
-            PersonDTO persons =
-                serializer.Deserialize<PersonDTO>(json);
-
-            return persons;
+                return persons;
+            }
         }
 
         public async Task<(HttpStatusCode StatusCode, string Message, PersonDTO Person)>
@@ -76,23 +78,24 @@ namespace MedicalSystem.WinForms.Services
                 person.Address
             });
 
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = 
-                await _httpClient.PostAsync($"api/Persons", content);
-
-            string responseContent = 
-                await response.Content.ReadAsStringAsync();
-
-            if(response.StatusCode == HttpStatusCode.Created)
+            using (StringContent content = new StringContent(json, Encoding.UTF8, "application/json"))
             {
-                PersonDTO newPerson = 
-                    new JavaScriptSerializer().Deserialize<PersonDTO>(responseContent);
+                using (HttpResponseMessage response =
+                    await _httpClient.PostAsync($"api/Persons", content))
+                {
+                    string responseContent =
+                        await response.Content.ReadAsStringAsync();
 
-                return (response.StatusCode, "Person added successfully.", newPerson);
+                    if (response.StatusCode == HttpStatusCode.Created)
+                    {
+                        PersonDTO newPerson =
+                            new JavaScriptSerializer().Deserialize<PersonDTO>(responseContent);
+
+                        return (response.StatusCode, "Person added successfully.", newPerson);
+                    }
+                    return (response.StatusCode, responseContent, null);
+                }
             }
-
-            return (response.StatusCode, responseContent, null);
         }
 
         public async Task<(HttpStatusCode StatusCode, string Message, PersonDTO Person)>
@@ -108,34 +111,36 @@ namespace MedicalSystem.WinForms.Services
                 person.Address
             });
 
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response =
-                await _httpClient.PutAsync($"api/Persons/{personID}", content);
-
-            string responseContent =
-                await response.Content.ReadAsStringAsync();
-
-            if (response.StatusCode == HttpStatusCode.OK)
+            using (StringContent content = new StringContent(json, Encoding.UTF8, "application/json"))
             {
-                PersonDTO updatedPerson =
-                    new JavaScriptSerializer().Deserialize<PersonDTO>(responseContent);
+                using (HttpResponseMessage response =
+                    await _httpClient.PutAsync($"api/Persons/{personID}", content))
+                {
+                    string responseContent =
+                        await response.Content.ReadAsStringAsync();
 
-                return (response.StatusCode, "Person updated successfully.", updatedPerson);
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        PersonDTO updatedPerson =
+                            new JavaScriptSerializer().Deserialize<PersonDTO>(responseContent);
+
+                        return (response.StatusCode, "Person updated successfully.", updatedPerson);
+                    }
+                    return (response.StatusCode, responseContent, null);
+                }
             }
-
-            return (response.StatusCode, responseContent, null);
         }
 
         public async Task<(HttpStatusCode StatusCode, string Message)> DeletePersonAsync(int personID)
         {
-            HttpResponseMessage response =
-                await _httpClient.DeleteAsync($"api/Persons/{personID}");
+            using (HttpResponseMessage response =
+                await _httpClient.DeleteAsync($"api/Persons/{personID}"))
+            {
+                string message =
+                    await response.Content.ReadAsStringAsync();
 
-            string message =
-                await response.Content.ReadAsStringAsync();
-
-            return (response.StatusCode, message);
+                return (response.StatusCode, message);
+            }
         }
     }
 }

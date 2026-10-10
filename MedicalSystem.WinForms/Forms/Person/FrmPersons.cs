@@ -48,28 +48,41 @@ namespace MedicalSystem.WinForms.Forms.Person
 
         private async Task LoadPersons()
         {
-            _allPersons = await _personService.GetAllPersonsAsync();
+            try
+            {
+                _allPersons = await _personService.GetAllPersonsAsync();
 
-            if (_allPersons == null || _allPersons.Count == 0)
+                if (_allPersons == null || _allPersons.Count == 0)
+                {
+                    dgvPersons.DataSource = null;
+                    lblRecordCount.Text = "0";
+
+                    MessageBox.Show(
+                        "There are no persons.",
+                        "Persons",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    return;
+                }
+
+                cbFilterBy.SelectedIndex = 0;
+                dgvPersons.DataSource = _allPersons;
+
+                FormatDataGridView();
+                lblRecordCount.Text = dgvPersons.Rows.Count.ToString();
+            }
+            catch(Exception ex)
             {
                 dgvPersons.DataSource = null;
                 lblRecordCount.Text = "0";
 
                 MessageBox.Show(
-                    "There are no persons.",
-                    "Persons",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
-                return;
+                   $"Failed to load persons.\n{ex.Message}",
+                   "Error",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
             }
-
-            cbFilterBy.SelectedIndex = 0;
-            dgvPersons.DataSource = _allPersons;
-
-            FormatDataGridView();
-
-            lblRecordCount.Text = dgvPersons.Rows.Count.ToString();
         }
 
         private async void FrmPersons_Load(object sender, EventArgs e)
@@ -103,6 +116,14 @@ namespace MedicalSystem.WinForms.Forms.Person
             }
 
             string FilterValue = txtFilterValue.Text.Trim();
+
+            if(FilterColumn == "PersonID" && !int.TryParse(FilterValue, out _))
+            {
+                dgvPersons.DataSource = _allPersons;
+                lblRecordCount.Text = dgvPersons.Rows.Count.ToString();
+                return;
+            }
+
             List<PersonDTO> FilteredPersons;
 
             switch(FilterColumn)

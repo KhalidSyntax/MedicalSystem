@@ -46,23 +46,34 @@ namespace MedicalSystem.WinForms.Forms.Controls
 
         public async Task LoadPersonInfo(int personID)
         {
-            _Person =
-                await _personService.GetPersonByIDAsync(personID);
-
-            if (_Person == null)
+            try
             {
-                ResetPersonInfo();
+                _Person =
+                    await _personService.GetPersonByIDAsync(personID);
 
+                if (_Person == null)
+                {
+                    ResetPersonInfo();
+
+                    MessageBox.Show(
+                        $"No Person With PersonID = {personID}",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                FillPersonInfo();
+            }
+            catch(Exception ex)
+            {
                 MessageBox.Show(
-                    $"No Person With PersonID = {personID}",
+                    $"Failed to load person: {ex.Message}",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-
-                return;
             }
-
-            FillPersonInfo();
         }
 
         private void FillPersonInfo()

@@ -156,17 +156,23 @@ namespace MedicalSystem.API.Controllers
             }
 
             int result = PersonBusiness.DeletePerson(PersonID);
-            
-            switch(result)
+
+            switch (result)
             {
+                case 1:
+                    return Ok($"Person with ID {PersonID} has been deleted.");
+
                 case -1:
                     return NotFound($"Person with ID {PersonID} not found. No rows deleted.");
+
                 case -2:
                     return Conflict($"Person with ID {PersonID} is a Patient and cannot be deleted.");
+
                 case -3:
                     return Conflict($"Person with ID {PersonID} is a Doctor and cannot be deleted.");
+
                 default:
-                    return Ok($"Person with ID {PersonID} has been deleted.");
+                    return StatusCode(500, "An unexpected error occurred while deleting the person.");
             }
         }
     }
