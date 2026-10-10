@@ -92,6 +92,9 @@ namespace MedicalSystem.API.Controllers
 
             switch (result)
             {
+                case 1:
+                    return Ok("Patient deleted successfully.");
+
                 case -1:
                     return NotFound("Patient does not exist.");
 
@@ -99,7 +102,7 @@ namespace MedicalSystem.API.Controllers
                     return Conflict("Patient has appointments and cannot be deleted.");
 
                 default:
-                    return Ok("Patient deleted successfully.");
+                    return StatusCode(500, "An unexpected error occurred.");
             }
         }
     }
