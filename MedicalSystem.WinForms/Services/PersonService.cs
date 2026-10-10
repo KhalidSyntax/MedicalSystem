@@ -12,6 +12,7 @@ namespace MedicalSystem.WinForms.Services
     public class PersonService
     {
         private readonly HttpClient _httpClient;
+        private readonly JavaScriptSerializer _serializer;
 
         public PersonService()
         {
@@ -19,6 +20,8 @@ namespace MedicalSystem.WinForms.Services
 
             _httpClient.BaseAddress =
                 new Uri("https://localhost:7277/");
+
+            _serializer = new JavaScriptSerializer();
         }
 
         public async Task<List<PersonDTO>> GetAllPersonsAsync()
@@ -34,10 +37,8 @@ namespace MedicalSystem.WinForms.Services
                 string json =
                     await response.Content.ReadAsStringAsync();
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-
                 List<PersonDTO> persons =
-                    serializer.Deserialize<List<PersonDTO>>(json);
+                    _serializer.Deserialize<List<PersonDTO>>(json);
 
                 return persons;
             }
@@ -56,10 +57,8 @@ namespace MedicalSystem.WinForms.Services
                 string json =
                     await response.Content.ReadAsStringAsync();
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-
                 PersonDTO persons =
-                    serializer.Deserialize<PersonDTO>(json);
+                    _serializer.Deserialize<PersonDTO>(json);
 
                 return persons;
             }
@@ -68,7 +67,7 @@ namespace MedicalSystem.WinForms.Services
         public async Task<(HttpStatusCode StatusCode, string Message, PersonDTO Person)>
             AddPersonAsync(CreatePersonDTO person)
         {
-            string json = new JavaScriptSerializer().Serialize(new
+            string json = _serializer.Serialize(new
             {
                 person.Name,
                 DateOfBirth = person.DateOfBirth?.ToString("yyyy-MM-dd"),
@@ -89,7 +88,7 @@ namespace MedicalSystem.WinForms.Services
                     if (response.StatusCode == HttpStatusCode.Created)
                     {
                         PersonDTO newPerson =
-                            new JavaScriptSerializer().Deserialize<PersonDTO>(responseContent);
+                            _serializer.Deserialize<PersonDTO>(responseContent);
 
                         return (response.StatusCode, "Person added successfully.", newPerson);
                     }
@@ -101,7 +100,7 @@ namespace MedicalSystem.WinForms.Services
         public async Task<(HttpStatusCode StatusCode, string Message, PersonDTO Person)>
             UpdatePersonAsync(int personID, UpdatePersonDTO person)
         {
-            string json = new JavaScriptSerializer().Serialize(new
+            string json = _serializer.Serialize(new
             {
                 person.Name,
                 DateOfBirth = person.DateOfBirth?.ToString("yyyy-MM-dd"),
@@ -122,7 +121,7 @@ namespace MedicalSystem.WinForms.Services
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
                         PersonDTO updatedPerson =
-                            new JavaScriptSerializer().Deserialize<PersonDTO>(responseContent);
+                            _serializer.Deserialize<PersonDTO>(responseContent);
 
                         return (response.StatusCode, "Person updated successfully.", updatedPerson);
                     }
