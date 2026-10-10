@@ -23,4 +23,10 @@
     {
         public int PersonID { get; set; }
     }
+
+    public class AvailablePersonDTO
+    {
+        public int PersonID { get; set; }
+        public string Name { get; set; } = "";
+    }
 }

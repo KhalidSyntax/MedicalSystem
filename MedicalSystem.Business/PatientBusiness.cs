@@ -43,6 +43,18 @@ namespace MedicalSystem.Business
             }
         }
 
+        public AvailablePersonDTO AvailablePerson
+        {
+            get
+            {
+                return new AvailablePersonDTO
+                {
+                    PersonID = this.PersonID,
+                    Name = this.Name
+                };
+            }
+        }
+
         public PatientBusiness()
         {
             this.PatientID = -1;
@@ -81,6 +93,11 @@ namespace MedicalSystem.Business
         public static List<PatientDTO> GetAllPatients()
         {
             return PatientData.GetAllPatients();
+        }
+
+        public static List<AvailablePersonDTO> GetAvailablePersons()
+        {
+            return PatientData.GetAvailablePersons();
         }
 
         public int AddNewPatient()

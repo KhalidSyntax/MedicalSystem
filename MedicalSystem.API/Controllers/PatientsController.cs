@@ -21,6 +21,18 @@ namespace MedicalSystem.API.Controllers
             return Ok(PatientList);
         }
 
+        [HttpGet("AvailablePersons", Name = "GetAvailablePersons")]
+        [ProducesResponseType(typeof(IEnumerable<AvailablePersonDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<AvailablePersonDTO>> GetAvailablePersons()
+        {
+            List<AvailablePersonDTO> availablePerson = PatientBusiness.GetAvailablePersons();
+            if (!availablePerson.Any())
+                return NotFound("There are no available persons to add as patients");
+
+            return Ok(availablePerson);
+        }
+
         [HttpGet("{PatientID}", Name = "GetPatientByID")]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(object), StatusCodes.Status404NotFound)]
@@ -67,7 +79,7 @@ namespace MedicalSystem.API.Controllers
                     return BadRequest("Person does not exist.");
 
                 case -2:
-                    return BadRequest("Person is already a patient.");
+                    return Conflict("Person is already a patient.");
             }
 
             int PatientID = newPatient.PatientID;

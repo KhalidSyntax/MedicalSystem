@@ -49,6 +49,33 @@ namespace MedicalSystem.DataAccess
             return PatientsList;
         }
 
+        public static List<AvailablePersonDTO> GetAvailablePersons()
+        {
+            var availablePersons = new List<AvailablePersonDTO>();
+
+            using (SqlConnection connection = DatabaseConnection.GetConnection())
+            {
+                using (SqlCommand command = new SqlCommand("SP_Patients_GetAvailablePersons", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            availablePersons.Add(new AvailablePersonDTO
+                            {
+                                PersonID = reader.GetInt32(reader.GetOrdinal("PersonID")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                            });
+                        }
+                    }
+                }
+            }
+            return availablePersons;
+        }
+
         public static PatientDTO? GetPatientByID(int PatientID)
         {
             using (SqlConnection connection = DatabaseConnection.GetConnection())
