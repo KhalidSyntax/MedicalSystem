@@ -1,4 +1,5 @@
-﻿using MedicalSystem.WinForms.Forms.Person;
+﻿using MedicalSystem.WinForms.Forms.Patient;
+using MedicalSystem.WinForms.Forms.Person;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,8 @@ namespace MedicalSystem.WinForms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmMain());
-            Application.Run(new FrmPersons());
+            // Application.Run(new FrmPersons());
+            Application.Run(new FrmPatients());
         }
     }
 }

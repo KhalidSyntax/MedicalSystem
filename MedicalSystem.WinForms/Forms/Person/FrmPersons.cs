@@ -264,6 +264,9 @@ namespace MedicalSystem.WinForms.Forms.Person
 
         private void dgvPersons_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
+
             int personID = Convert.ToInt32(dgvPersons.CurrentRow.Cells["PersonID"].Value);
 
             FrmPersonDetails frm = new FrmPersonDetails(personID);
