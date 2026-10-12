@@ -110,6 +110,11 @@ namespace MedicalSystem.Business
             return DoctorData.GetAvailablePersons();
         }
 
+        public static List<DoctorLookupDTO> GetDoctorsLookup()
+        {
+            return DoctorData.GetDoctorsLookup();
+        }
+
         private bool _AddNewDoctor()
         {
             int result = DoctorData.AddNewDoctor(CreateDTO);

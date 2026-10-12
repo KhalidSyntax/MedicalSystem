@@ -1,6 +1,7 @@
-﻿using System.Data;
-using MedicalSystem.DTOs;
+﻿using MedicalSystem.DTOs;
 using Microsoft.Data.SqlClient;
+using System.Data;
+using System.Reflection.PortableExecutable;
 
 namespace MedicalSystem.DataAccess
 {
@@ -77,6 +78,32 @@ namespace MedicalSystem.DataAccess
                 }
             }
             return availablePersons;
+        }
+
+        public static List<DoctorLookupDTO> GetDoctorsLookup()
+        {
+            var DoctorsList = new List<DoctorLookupDTO>();
+
+            using (SqlConnection Connection = DatabaseConnection.GetConnection())
+            using (SqlCommand Command = new SqlCommand("SP_Doctors_GetLookup", Connection))
+            {
+                Command.CommandType = CommandType.StoredProcedure;
+                Connection.Open();
+
+                using (SqlDataReader reader = Command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        DoctorsList.Add(new DoctorLookupDTO
+                        {
+                            DoctorID = reader.GetInt32(reader.GetOrdinal("DoctorID")),
+                            Name = reader.GetString(reader.GetOrdinal("Name"))
+                        });
+                    }
+                }
+            }
+
+            return DoctorsList;
         }
 
         public static DoctorDTO? GetDoctorByID(int DoctorID)

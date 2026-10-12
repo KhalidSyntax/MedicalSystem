@@ -21,6 +21,19 @@ namespace MedicalSystem.API.Controllers
             return Ok(PatientList);
         }
 
+        [HttpGet("Lookup", Name = "GetPatientsLookup")]
+        [ProducesResponseType(typeof(IEnumerable<PatientLookupDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<PatientLookupDTO>> GetPatientsLookup()
+        {
+            List<PatientLookupDTO> PatientList = PatientBusiness.GetPatientsLookup();
+
+            if (!PatientList.Any())
+                return NotFound("There are no Patients");
+
+            return Ok(PatientList);
+        }
+
         [HttpGet("AvailablePersons", Name = "GetAvailablePersons")]
         [ProducesResponseType(typeof(IEnumerable<AvailablePersonDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]

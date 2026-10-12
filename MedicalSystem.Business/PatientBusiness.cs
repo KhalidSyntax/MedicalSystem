@@ -100,6 +100,11 @@ namespace MedicalSystem.Business
             return PatientData.GetAvailablePersons();
         }
 
+        public static List<PatientLookupDTO> GetPatientsLookup()
+        {
+            return PatientData.GetPatientsLookup();
+        }
+
         public int AddNewPatient()
         {
             this.PatientID = PatientData.AddNewPatient(CreateDTO);
