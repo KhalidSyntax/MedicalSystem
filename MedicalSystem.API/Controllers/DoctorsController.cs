@@ -1,4 +1,5 @@
 ﻿using MedicalSystem.Business;
+using MedicalSystem.DataAccess;
 using MedicalSystem.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,18 @@ namespace MedicalSystem.API.Controllers
                 return NotFound("There are no Doctors");
 
             return Ok(DoctorList);
+        }
+
+        [HttpGet("AvailablePersons", Name = "GetAvailableDoctorsPersons")]
+        [ProducesResponseType(typeof(IEnumerable<AvailablePersonDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<AvailablePersonDTO>> GetAvailablePersons()
+        {
+            List<AvailablePersonDTO> availablePerson = DoctorData.GetAvailablePersons();
+            if (!availablePerson.Any())
+                return NotFound("There are no available persons to add as doctors");
+
+            return Ok(availablePerson);
         }
 
         [HttpGet("{DoctorID}", Name = "GetDoctorByID")]
@@ -137,6 +150,9 @@ namespace MedicalSystem.API.Controllers
 
             switch (result)
             {
+                case 1:
+                    return Ok($"Doctor with ID {DoctorID} has been deleted.");
+
                 case -1:
                     return NotFound(
                         $"Doctor with ID {DoctorID} not found. No rows deleted.");
@@ -146,8 +162,7 @@ namespace MedicalSystem.API.Controllers
                         $"Doctor with ID {DoctorID} has appointments and cannot be deleted.");
 
                 default:
-                    return Ok(
-                        $"Doctor with ID {DoctorID} has been deleted.");
+                    return StatusCode(500, "An unexpected error occurred.");
             }
         }
     }
