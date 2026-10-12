@@ -34,7 +34,7 @@
             // 
             // personInfoControl1
             // 
-            this.personInfoControl1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.personInfoControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.personInfoControl1.Location = new System.Drawing.Point(5, 2);
             this.personInfoControl1.Margin = new System.Windows.Forms.Padding(4);
             this.personInfoControl1.Name = "personInfoControl1";
@@ -61,7 +61,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(472, 740);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.personInfoControl1);

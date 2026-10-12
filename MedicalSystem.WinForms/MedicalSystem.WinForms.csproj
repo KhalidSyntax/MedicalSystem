@@ -47,9 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\AppointmentDTO.cs" />
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
     <Compile Include="DTOs\PersonDTO.cs" />
+    <Compile Include="Forms\Appointment\FrmAppointmentAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Appointment\FrmAppointmentAddEdit.Designer.cs">
+      <DependentUpon>FrmAppointmentAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Appointment\FrmAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Appointment\FrmAppointments.Designer.cs">
+      <DependentUpon>FrmAppointments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Controls\PersonInfoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,9 +120,16 @@
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppointmentService.cs" />
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PersonService.cs" />
+    <EmbeddedResource Include="Forms\Appointment\FrmAppointmentAddEdit.resx">
+      <DependentUpon>FrmAppointmentAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Appointment\FrmAppointments.resx">
+      <DependentUpon>FrmAppointments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\PersonInfoControl.resx">
       <DependentUpon>PersonInfoControl.cs</DependentUpon>
     </EmbeddedResource>

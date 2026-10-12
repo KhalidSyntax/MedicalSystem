@@ -75,7 +75,7 @@
             this.txtFilterValue.Location = new System.Drawing.Point(346, 169);
             this.txtFilterValue.MaxLength = 100;
             this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(197, 42);
+            this.txtFilterValue.Size = new System.Drawing.Size(197, 25);
             this.txtFilterValue.TabIndex = 1;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
@@ -92,7 +92,7 @@
             "Email"});
             this.cbFilterBy.Location = new System.Drawing.Point(126, 169);
             this.cbFilterBy.Name = "cbFilterBy";
-            this.cbFilterBy.Size = new System.Drawing.Size(197, 44);
+            this.cbFilterBy.Size = new System.Drawing.Size(197, 25);
             this.cbFilterBy.TabIndex = 0;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
@@ -168,7 +168,7 @@
             this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
             this.lblSearch.Location = new System.Drawing.Point(51, 172);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(102, 37);
+            this.lblSearch.Size = new System.Drawing.Size(54, 19);
             this.lblSearch.TabIndex = 23;
             this.lblSearch.Text = "Search";
             // 
@@ -187,8 +187,9 @@
             // 
             // FrmPatients
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 36F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(940, 517);
             this.Controls.Add(this.dgvPatients);
             this.Controls.Add(this.txtFilterValue);

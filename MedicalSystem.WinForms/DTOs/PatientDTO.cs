@@ -31,4 +31,10 @@ namespace MedicalSystem.WinForms.DTOs
         public int PersonID { get; set; }
         public string Name { get; set; } = "";
     }
+
+    public class PatientLookupDTO
+    {
+        public int PatientID { get; set; }
+        public string Name { get; set; } = "";
+    }
 }

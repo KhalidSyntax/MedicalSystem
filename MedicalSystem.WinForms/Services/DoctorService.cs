@@ -37,6 +37,22 @@ namespace MedicalSystem.WinForms.Services
             }
         }
 
+        public async Task<List<DoctorLookupDTO>> GetDoctorsLookupAsync()
+        {
+            using (HttpResponseMessage response =
+                await _httpClient.GetAsync("api/Doctors/Lookup"))
+            {
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return new List<DoctorLookupDTO>();
+
+                response.EnsureSuccessStatusCode();
+
+                string json = await response.Content.ReadAsStringAsync();
+
+                return _serializer.Deserialize<List<DoctorLookupDTO>>(json);
+            }
+        }
+
         public async Task<List<AvailablePersonDTO>> GetAvailablePersonsAsync()
         {
             using (HttpResponseMessage response =

@@ -113,6 +113,7 @@
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(471, 257);
             this.Controls.Add(this.cbPersons);
