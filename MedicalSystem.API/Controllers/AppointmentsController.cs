@@ -240,6 +240,10 @@ namespace MedicalSystem.API.Controllers
 
             switch (result)
             {
+                case 1:
+                    return Ok(
+                        $"Appointment with ID {AppointmentID} has been deleted.");
+
                 case -1:
                     return NotFound(
                         $"Appointment with ID {AppointmentID} not found. No rows deleted.");
@@ -249,8 +253,7 @@ namespace MedicalSystem.API.Controllers
                         $"Appointment with ID {AppointmentID} is linked to a Medical Record and cannot be deleted.");
 
                 default:
-                    return Ok(
-                        $"Appointment with ID {AppointmentID} has been deleted.");
+                    return StatusCode(500, "An unexpected error occurred.");
             }
         }
     }
