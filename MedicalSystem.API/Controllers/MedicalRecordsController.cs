@@ -133,13 +133,16 @@ namespace MedicalSystem.API.Controllers
 
             switch (result)
             {
+                case 1:
+                    return Ok(
+                        $"Medical Record with ID {MedicalRecordID} has been deleted.");
+
                 case -1:
                     return NotFound(
                         $"Medical Record with ID {MedicalRecordID} not found. No rows deleted.");
 
                 default:
-                    return Ok(
-                        $"Medical Record with ID {MedicalRecordID} has been deleted.");
+                    return StatusCode(500, "An unexpected error occurred.");
             }
         }
     }
