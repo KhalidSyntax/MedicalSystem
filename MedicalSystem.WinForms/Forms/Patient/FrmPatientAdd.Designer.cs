@@ -47,7 +47,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(471, 49);
             this.lblTitle.TabIndex = 57;
-            this.lblTitle.Text = "Add New Person";
+            this.lblTitle.Text = "Add New Patient";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // epValidation
@@ -125,7 +125,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPatientAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add New Person";
+            this.Text = "Add New Patient";
             this.Load += new System.EventHandler(this.FrmPatientAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.epValidation)).EndInit();
             this.ResumeLayout(false);

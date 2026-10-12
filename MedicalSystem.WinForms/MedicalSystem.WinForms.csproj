@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
     <Compile Include="DTOs\PersonDTO.cs" />
     <Compile Include="Forms\Controls\PersonInfoControl.cs">
@@ -54,6 +55,18 @@
     </Compile>
     <Compile Include="Forms\Controls\PersonInfoControl.Designer.cs">
       <DependentUpon>PersonInfoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Doctors\FrmDoctorAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Doctors\FrmDoctorAddEdit.Designer.cs">
+      <DependentUpon>FrmDoctorAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Doctors\FrmDoctors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Doctors\FrmDoctors.Designer.cs">
+      <DependentUpon>FrmDoctors.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
@@ -94,10 +107,17 @@
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PersonService.cs" />
     <EmbeddedResource Include="Forms\Controls\PersonInfoControl.resx">
       <DependentUpon>PersonInfoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Doctors\FrmDoctorAddEdit.resx">
+      <DependentUpon>FrmDoctorAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Doctors\FrmDoctors.resx">
+      <DependentUpon>FrmDoctors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
