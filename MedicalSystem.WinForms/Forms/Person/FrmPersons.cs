@@ -166,6 +166,8 @@ namespace MedicalSystem.WinForms.Forms.Person
                 txtFilterValue.Text = "";
                 txtFilterValue.Focus();
             }
+            dgvPersons.DataSource = _allPersons;
+            lblRecordCount.Text = dgvPersons.Rows.Count.ToString();
         }
 
         private async void Frm_DataBack(object sender, int personID)

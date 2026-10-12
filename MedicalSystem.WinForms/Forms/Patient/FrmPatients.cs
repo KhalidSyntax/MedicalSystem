@@ -174,6 +174,9 @@ namespace MedicalSystem.WinForms.Forms.Patient
                 txtFilterValue.Text = "";
                 txtFilterValue.Focus();
             }
+
+            dgvPatients.DataSource = _allPatients;
+            lblRecordCount.Text = dgvPatients.Rows.Count.ToString();
         }
 
         private async void Frm_DataBack(object sender, int patientID)

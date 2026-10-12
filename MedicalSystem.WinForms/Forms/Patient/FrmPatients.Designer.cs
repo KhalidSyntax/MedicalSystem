@@ -75,9 +75,10 @@
             this.txtFilterValue.Location = new System.Drawing.Point(346, 169);
             this.txtFilterValue.MaxLength = 100;
             this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(197, 25);
+            this.txtFilterValue.Size = new System.Drawing.Size(197, 42);
             this.txtFilterValue.TabIndex = 1;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // cbFilterBy
             // 
@@ -91,7 +92,7 @@
             "Email"});
             this.cbFilterBy.Location = new System.Drawing.Point(126, 169);
             this.cbFilterBy.Name = "cbFilterBy";
-            this.cbFilterBy.Size = new System.Drawing.Size(197, 25);
+            this.cbFilterBy.Size = new System.Drawing.Size(197, 44);
             this.cbFilterBy.TabIndex = 0;
             this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
@@ -167,7 +168,7 @@
             this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
             this.lblSearch.Location = new System.Drawing.Point(51, 172);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(54, 19);
+            this.lblSearch.Size = new System.Drawing.Size(102, 37);
             this.lblSearch.TabIndex = 23;
             this.lblSearch.Text = "Search";
             // 
@@ -186,7 +187,7 @@
             // 
             // FrmPatients
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 36F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 517);
             this.Controls.Add(this.dgvPatients);
@@ -201,7 +202,7 @@
             this.Controls.Add(this.lblTitle);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPatients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patients Management";
