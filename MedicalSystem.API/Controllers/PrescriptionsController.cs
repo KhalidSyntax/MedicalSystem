@@ -1,6 +1,7 @@
 ﻿using MedicalSystem.Business;
 using MedicalSystem.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace MedicalSystem.API.Controllers
 {
@@ -229,13 +230,18 @@ namespace MedicalSystem.API.Controllers
 
             switch (result)
             {
+                case 1:
+                    return Ok(
+                        $"Prescription with ID {PrescriptionID} has been deleted.");
+
                 case -1:
                     return NotFound(
                         $"Prescription with ID {PrescriptionID} not found. No rows deleted.");
 
                 default:
-                    return Ok(
-                        $"Prescription with ID {PrescriptionID} has been deleted.");
+                    return StatusCode(
+                        500,
+                        "An unexpected error occurred while deleting the prescription.");
             }
         }
     }
