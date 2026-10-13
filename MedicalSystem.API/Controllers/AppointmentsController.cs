@@ -91,6 +91,19 @@ namespace MedicalSystem.API.Controllers
             return Ok(AppointmentList);
         }
 
+        [HttpGet("AvailableForMedicalRecord", Name = "GetAvailableAppointmentsForMedicalRecord")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<AppointmentLookupDTO>> GetAvailableAppointmentsForMedicalRecord()
+        {
+            var appointments = AppointmentBusiness.GetAvailableForMedicalRecord();
+
+            if (appointments == null || !appointments.Any())
+                return NotFound("There are no available appointments for medical records.");
+
+            return Ok(appointments);
+        }
+
         [HttpPost(Name = "AddNewAppointment")]
         [ProducesResponseType(typeof(AppointmentDTO), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]

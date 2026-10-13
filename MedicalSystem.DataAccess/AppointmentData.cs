@@ -168,6 +168,33 @@ namespace MedicalSystem.DataAccess
             return AppointmentsList;
         }
 
+        public static List<AppointmentLookupDTO> GetAvailableForMedicalRecord()
+        {
+            var appointments = new List<AppointmentLookupDTO>();
+
+            using (SqlConnection connection = DatabaseConnection.GetConnection())
+            using (SqlCommand command = new SqlCommand("SP_Appointments_GetAvailableForMedicalRecord", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        appointments.Add(new AppointmentLookupDTO
+                        {
+                            AppointmentID = reader.GetInt32(reader.GetOrdinal("AppointmentID")),
+                            PatientName = reader.GetString(reader.GetOrdinal("PatientName")),
+                            DoctorName = reader.GetString(reader.GetOrdinal("DoctorName"))
+                        });
+                    }
+                }
+            }
+
+            return appointments;
+        }
+
         public static int AddNewAppointment(CreateAppointmentDTO createAppointment)
         {
             using (SqlConnection connection = DatabaseConnection.GetConnection())

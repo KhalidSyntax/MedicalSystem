@@ -143,6 +143,11 @@ namespace MedicalSystem.Business
             return AppointmentData.GetAppointmentsByPatient(PatientID);
         }
 
+        public static List<AppointmentLookupDTO> GetAvailableForMedicalRecord()
+        {
+            return AppointmentData.GetAvailableForMedicalRecord();
+        }
+
         private int _AddNewAppointment()
         {
             int result = AppointmentData.AddNewAppointment(CreateDTO);
