@@ -22,6 +22,19 @@ namespace MedicalSystem.API.Controllers
             return Ok(MedicalRecordList);
         }
 
+        [HttpGet("Lookup", Name = "GetMedicalRecordsLookup")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IEnumerable<MedicalRecordDTO>> GetMedicalRecordsLookup()
+        {
+            var MedicalRecords = MedicalRecordBusiness.GetMedicalRecordsLookup();
+
+            if (MedicalRecords == null || !MedicalRecords.Any())
+                return NotFound("There are no Medical Records");
+
+            return Ok(MedicalRecords);
+        }
+
         [HttpGet("{MedicalRecordID}", Name = "GetMedicalRecordByID")]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]

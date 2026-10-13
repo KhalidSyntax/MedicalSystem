@@ -127,6 +127,11 @@ namespace MedicalSystem.Business
             return MedicalRecordData.GetAllMedicalRecords();
         }
 
+        public static List<MedicalRecordDTO> GetMedicalRecordsLookup()
+        {
+            return MedicalRecordData.GetMedicalRecordsLookup();
+        }
+
         private int _AddNewMedicalRecord()
         {
             int result =

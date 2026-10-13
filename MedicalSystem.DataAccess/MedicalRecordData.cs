@@ -66,6 +66,33 @@ namespace MedicalSystem.DataAccess
             return MedicalRecordsList;
         }
 
+        public static List<MedicalRecordDTO> GetMedicalRecordsLookup()
+        {
+            var MedicalRecords = new List<MedicalRecordDTO>();
+
+            using (SqlConnection Connection = DatabaseConnection.GetConnection())
+            using (SqlCommand Command = new SqlCommand("SP_MedicalRecords_GetLookup", Connection))
+            {
+                Command.CommandType = CommandType.StoredProcedure;
+
+                Connection.Open();
+
+                using (SqlDataReader reader = Command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        MedicalRecords.Add(new MedicalRecordDTO
+                        {
+                            MedicalRecordID = reader.GetInt32(reader.GetOrdinal("MedicalRecordID")),
+                            PatientName = reader.GetString(reader.GetOrdinal("PatientName")),
+                        });
+                    }
+                }
+            }
+
+            return MedicalRecords;
+        }
+
         public static MedicalRecordDTO? GetMedicalRecordByID(int MedicalRecordID)
         {
             using (SqlConnection connection = DatabaseConnection.GetConnection())
