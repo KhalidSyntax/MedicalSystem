@@ -49,4 +49,13 @@ namespace MedicalSystem.WinForms.DTOs
         public DateTime AppointmentDateTime { get; set; }
         public byte AppointmentStatus { get; set; }
     }
+
+    public class AppointmentLookupDTO
+    {
+        public int AppointmentID { get; set; }
+        public string PatientName { get; set; } = "";
+        public string DoctorName { get; set; } = "";
+
+        public string DisplayText => $"Appointment #{AppointmentID}";
+    }
 }

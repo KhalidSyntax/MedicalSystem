@@ -261,6 +261,8 @@ namespace MedicalSystem.WinForms.Forms.Person
 
             if (response.StatusCode == HttpStatusCode.Created)
             {
+                lblPersonID.Text = response.Person.PersonID.ToString();
+
                 MessageBox.Show(
                     response.Message,
                     "Saved",

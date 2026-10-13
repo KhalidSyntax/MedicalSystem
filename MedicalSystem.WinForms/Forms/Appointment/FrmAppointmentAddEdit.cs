@@ -272,17 +272,20 @@ namespace MedicalSystem.WinForms.Forms.Appointment
 
             if (response.StatusCode == HttpStatusCode.Created)
             {
+                if (response.Appointment != null)
+                {
+                    lblAppointmentID.Text =
+                        response.Appointment.AppointmentID.ToString();
+
+                    DataBack?.Invoke(
+                        this, response.Appointment.AppointmentID);
+                }
+
                 MessageBox.Show(
                     response.Message,
                     "Saved",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-
-                if (response.Appointment != null)
-                {
-                    DataBack?.Invoke(
-                        this, response.Appointment.AppointmentID);
-                }
 
                 this.Close();
             }

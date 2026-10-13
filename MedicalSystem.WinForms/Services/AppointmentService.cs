@@ -85,6 +85,22 @@ namespace MedicalSystem.WinForms.Services
             }
         }
 
+        public async Task<List<AppointmentLookupDTO>> GetAvailableForMedicalRecordAsync()
+        {
+            using (HttpResponseMessage response = await _httpClient.GetAsync(
+                "api/Appointments/AvailableForMedicalRecord"))
+            {
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return new List<AppointmentLookupDTO>();
+
+                response.EnsureSuccessStatusCode();
+
+                string json = await response.Content.ReadAsStringAsync();
+
+                return _serializer.Deserialize<List<AppointmentLookupDTO>>(json);
+            }
+        }
+
         public async Task<(HttpStatusCode StatusCode, string Message, AppointmentDTO Appointment)>
             AddAppointmentAsync(CreateAppointmentDTO appointment)
         {

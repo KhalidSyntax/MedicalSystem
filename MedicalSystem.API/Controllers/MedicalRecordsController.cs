@@ -123,6 +123,7 @@ namespace MedicalSystem.API.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
         public ActionResult DeleteMedicalRecord(int MedicalRecordID)
         {
             if (MedicalRecordID < 1)
@@ -140,6 +141,10 @@ namespace MedicalSystem.API.Controllers
                 case -1:
                     return NotFound(
                         $"Medical Record with ID {MedicalRecordID} not found. No rows deleted.");
+
+                case -2:
+                    return Conflict(
+                        $"Medical Record with ID {MedicalRecordID} cannot be deleted because it has associated prescriptions.");
 
                 default:
                     return StatusCode(500, "An unexpected error occurred.");
