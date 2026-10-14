@@ -85,37 +85,30 @@ namespace MedicalSystem.API.Controllers
 
             switch (result)
             {
-                case -11:
-                    return BadRequest(
-                        "MedicalRecordID must be a valid ID.");
-
-                case -12:
-                    return BadRequest(
-                        "MedicationName is required.");
-
-                case -13:
-                    return BadRequest(
-                        "Dosage is required.");
-
-                case -14:
-                    return BadRequest(
-                        "Frequency is required.");
-
-                case -15:
-                    return BadRequest(
-                        "StartDate is required.");
-
-                case -16:
-                    return BadRequest(
-                        "EndDate is required.");
-
-                case -17:
-                    return BadRequest(
-                        "EndDate cannot be before StartDate.");
-
                 case -1:
                     return NotFound(
                         $"Medical Record with ID {createPrescription.MedicalRecordID} does not exist.");
+
+                case -11:
+                    return BadRequest("MedicalRecordID must be a valid ID.");
+
+                case -12:
+                    return BadRequest("MedicationName is required.");
+
+                case -13:
+                    return BadRequest("Dosage is required.");
+
+                case -14:
+                    return BadRequest("Frequency is required.");
+
+                case -15:
+                    return BadRequest("StartDate is required.");
+
+                case -16:
+                    return BadRequest("EndDate is required.");
+
+                case -17:
+                    return BadRequest("EndDate cannot be before StartDate.");
             }
 
             int PrescriptionID = prescription.PrescriptionID;

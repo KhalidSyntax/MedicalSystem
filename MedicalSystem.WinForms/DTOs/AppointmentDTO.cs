@@ -56,6 +56,7 @@ namespace MedicalSystem.WinForms.DTOs
         public string PatientName { get; set; } = "";
         public string DoctorName { get; set; } = "";
 
-        public string DisplayText => $"Appointment #{AppointmentID}";
+        public string DisplayText =>
+            $"#{AppointmentID} - {PatientName}";
     }
 }

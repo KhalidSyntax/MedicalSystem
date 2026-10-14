@@ -9,6 +9,11 @@
         public string VisitDescription { get; set; } = "";
         public string Diagnosis { get; set; } = "";
         public string AdditionalNotes { get; set; } = "";
+
+        public string DisplayText
+        {
+            get { return $"{MedicalRecordID} - {PatientName}"; }
+        }
     }
 
     public class CreateMedicalRecordDTO

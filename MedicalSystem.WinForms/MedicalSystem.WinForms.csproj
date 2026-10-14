@@ -52,6 +52,7 @@
     <Compile Include="DTOs\MedicalRecordDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
     <Compile Include="DTOs\PersonDTO.cs" />
+    <Compile Include="DTOs\PrescriptionDTO.cs" />
     <Compile Include="Forms\Appointment\FrmAppointmentAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +70,12 @@
     </Compile>
     <Compile Include="Forms\Controls\PersonInfoControl.Designer.cs">
       <DependentUpon>PersonInfoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\PrescriptionInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\PrescriptionInfoControl.Designer.cs">
+      <DependentUpon>PrescriptionInfoControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Doctors\FrmDoctorAddEdit.cs">
       <SubType>Form</SubType>
@@ -130,6 +137,24 @@
     <Compile Include="Forms\Person\FrmPersons.Designer.cs">
       <DependentUpon>FrmPersons.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Prescriptions\FrmPrescriptionAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Prescriptions\FrmPrescriptionAddEdit.Designer.cs">
+      <DependentUpon>FrmPrescriptionAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Prescriptions\FrmPrescriptionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Prescriptions\FrmPrescriptionInfo.Designer.cs">
+      <DependentUpon>FrmPrescriptionInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Prescriptions\FrmPrescriptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Prescriptions\FrmPrescriptions.Designer.cs">
+      <DependentUpon>FrmPrescriptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,6 +163,7 @@
     <Compile Include="Services\MedicalRecordService.cs" />
     <Compile Include="Services\PatientService.cs" />
     <Compile Include="Services\PersonService.cs" />
+    <Compile Include="Services\PrescriptionService.cs" />
     <EmbeddedResource Include="Forms\Appointment\FrmAppointmentAddEdit.resx">
       <DependentUpon>FrmAppointmentAddEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\PersonInfoControl.resx">
       <DependentUpon>PersonInfoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\PrescriptionInfoControl.resx">
+      <DependentUpon>PrescriptionInfoControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Doctors\FrmDoctorAddEdit.resx">
       <DependentUpon>FrmDoctorAddEdit.cs</DependentUpon>
@@ -176,6 +205,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Person\FrmPersons.resx">
       <DependentUpon>FrmPersons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prescriptions\FrmPrescriptionAddEdit.resx">
+      <DependentUpon>FrmPrescriptionAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prescriptions\FrmPrescriptionInfo.resx">
+      <DependentUpon>FrmPrescriptionInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prescriptions\FrmPrescriptions.resx">
+      <DependentUpon>FrmPrescriptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

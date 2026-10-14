@@ -37,6 +37,24 @@ namespace MedicalSystem.WinForms.Services
             }
         }
 
+        public async Task<List<MedicalRecordDTO>> GetMedicalRecordsLookupAsync()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response =
+                    await client.GetAsync("api/MedicalRecords/Lookup");
+
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return new List<MedicalRecordDTO>();
+
+                response.EnsureSuccessStatusCode();
+
+                string json = await response.Content.ReadAsStringAsync();
+
+                return _serializer.Deserialize<List<MedicalRecordDTO>>(json);
+            }
+        }
+
         public async Task<MedicalRecordDTO> GetMedicalRecordByIDAsync(int medicalRecordID)
         {
             using (HttpResponseMessage response =

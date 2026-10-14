@@ -51,6 +51,7 @@ namespace MedicalSystem.WinForms.Forms.MedicalRecord
 
             cbAppointments.DataSource = null;
             cbAppointments.Visible = true;
+
             lblAppointmentName.Visible = false;
 
             btnSave.Enabled = true;
@@ -132,7 +133,7 @@ namespace MedicalSystem.WinForms.Forms.MedicalRecord
                 cbAppointments.Visible = false;
 
                 lblAppointmentName.Text =
-                    $"Appointment #{_MedicalRecord.AppointmentID}";
+                    $"Appointment #{_MedicalRecord.AppointmentID} - {_MedicalRecord.PatientName}";
 
                 lblAppointmentName.Visible = true;
             }
