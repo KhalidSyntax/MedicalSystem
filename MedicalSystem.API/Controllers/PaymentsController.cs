@@ -1,6 +1,7 @@
 ﻿using MedicalSystem.Business;
 using MedicalSystem.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace MedicalSystem.API.Controllers
 {
@@ -67,10 +68,6 @@ namespace MedicalSystem.API.Controllers
                     return BadRequest(
                         "AppointmentID is required.");
 
-                case -11:
-                    return BadRequest(
-                        "PaymentID is invalid.");
-
                 case -12:
                     return BadRequest(
                         "Amount Paid must be greater than 0.");
@@ -86,14 +83,6 @@ namespace MedicalSystem.API.Controllers
                 case -2:
                     return BadRequest(
                         "Payment can only be added for completed appointments.");
-
-                case -3:
-                    return BadRequest(
-                        "Amount Paid must be greater than 0.");
-
-                case -4:
-                    return BadRequest(
-                        "Payment Date is required.");
 
                 case -5:
                     return Conflict(
@@ -173,13 +162,18 @@ namespace MedicalSystem.API.Controllers
 
             switch (result)
             {
+                case 1:
+                    return Ok(
+                        $"Payment with ID {PaymentID} has been deleted.");
+
                 case -1:
                     return NotFound(
                         $"Payment with ID {PaymentID} not found. No rows deleted.");
 
                 default:
-                    return Ok(
-                        $"Payment with ID {PaymentID} has been deleted.");
+                    return StatusCode(
+                        500,
+                        "An unexpected error occurred while deleting the payment.");
             }
         }
     }
