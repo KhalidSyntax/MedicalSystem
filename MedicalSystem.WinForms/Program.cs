@@ -2,6 +2,7 @@
 using MedicalSystem.WinForms.Forms.Doctor;
 using MedicalSystem.WinForms.Forms.MedicalRecord;
 using MedicalSystem.WinForms.Forms.Patient;
+using MedicalSystem.WinForms.Forms.Payments;
 using MedicalSystem.WinForms.Forms.Person;
 using MedicalSystem.WinForms.Forms.Prescriptions;
 using System;
@@ -28,7 +29,8 @@ namespace MedicalSystem.WinForms
             // Application.Run(new FrmDoctors());
             // Application.Run(new FrmAppointments());
             // Application.Run(new FrmMedicalRecords());
-            Application.Run(new FrmPrescriptions());
+            // Application.Run(new FrmPrescriptions());
+            Application.Run(new FrmPayments());
         }
     }
 }

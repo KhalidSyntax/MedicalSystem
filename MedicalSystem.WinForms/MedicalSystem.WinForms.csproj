@@ -51,6 +51,7 @@
     <Compile Include="DTOs\DoctorDTO.cs" />
     <Compile Include="DTOs\MedicalRecordDTO.cs" />
     <Compile Include="DTOs\PatientDTO.cs" />
+    <Compile Include="DTOs\PaymentDTO.cs" />
     <Compile Include="DTOs\PersonDTO.cs" />
     <Compile Include="DTOs\PrescriptionDTO.cs" />
     <Compile Include="Forms\Appointment\FrmAppointmentAddEdit.cs">
@@ -119,6 +120,18 @@
     <Compile Include="Forms\Patient\FrmPatients.Designer.cs">
       <DependentUpon>FrmPatients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Payments\FrmPaymentAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Payments\FrmPaymentAddEdit.Designer.cs">
+      <DependentUpon>FrmPaymentAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Payments\FrmPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Payments\FrmPayments.Designer.cs">
+      <DependentUpon>FrmPayments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Person\FrmPersonDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +175,7 @@
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\MedicalRecordService.cs" />
     <Compile Include="Services\PatientService.cs" />
+    <Compile Include="Services\PaymentService.cs" />
     <Compile Include="Services\PersonService.cs" />
     <Compile Include="Services\PrescriptionService.cs" />
     <EmbeddedResource Include="Forms\Appointment\FrmAppointmentAddEdit.resx">
@@ -196,6 +210,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Patient\FrmPatients.resx">
       <DependentUpon>FrmPatients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Payments\FrmPaymentAddEdit.resx">
+      <DependentUpon>FrmPaymentAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Payments\FrmPayments.resx">
+      <DependentUpon>FrmPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Person\FrmPersonDetails.resx">
       <DependentUpon>FrmPersonDetails.cs</DependentUpon>
