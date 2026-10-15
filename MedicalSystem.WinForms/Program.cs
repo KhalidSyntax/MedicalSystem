@@ -23,14 +23,7 @@ namespace MedicalSystem.WinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmMain());
-            // Application.Run(new FrmPersons());
-            // Application.Run(new FrmPatients());
-            // Application.Run(new FrmDoctors());
-            // Application.Run(new FrmAppointments());
-            // Application.Run(new FrmMedicalRecords());
-            // Application.Run(new FrmPrescriptions());
-            Application.Run(new FrmPayments());
+            Application.Run(new FrmMain());
         }
     }
 }
