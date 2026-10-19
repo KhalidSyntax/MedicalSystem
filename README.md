@@ -33,10 +33,6 @@ The system provides the essential functionality needed to manage persons, patien
 - Manage patients' medical records.
 - Store and retrieve medical information.
 
-### 🗄️ Database ERD
-
-![Database ERD](Screenshots/ERD.png)
-
 ### 💊 Prescriptions
 
 - Create and manage prescriptions.
@@ -168,6 +164,10 @@ The following screenshots demonstrate the main interfaces and core functionality
 ### 🗂️ Medical Records
 
 ![Medical Records](Screenshots/MedicalRecords.png)
+
+### 🗄️ Database ERD
+
+![Database ERD](Screenshots/ERD.png)
 
 ---
 
